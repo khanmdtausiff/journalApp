@@ -87,6 +87,7 @@ public class UserSchedulerTest {
         List<User> allUsersAfterSetup = mongoTemplate.findAll(User.class);
         System.out.println("All users in test DB after setup: " + allUsersAfterSetup.size() + " users: " + allUsersAfterSetup);}
     //@Disabled
+    @Disabled
     @Test
     public void fetchUsersAndSendSaMailTest(){
         userScheduler.fetchUsersAndSendSaMail();

@@ -1,0 +1,46 @@
+#spring:
+#  profiles:
+#    active: dev      all configs are in environment variables in IntelliJ
+
+spring:
+  redis:
+    host: ${REDIS_HOST}
+    port: 13158
+    password: ${REDIS_PASSWORD}
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${JAVA_EMAIL}
+    password: ${JAVA_EMAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  kafka:
+    bootstrap-servers: ${KAFKA_SERVERS}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: week-sentiment-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: net.engineeringdigest.journalApp.model
+
+logging:
+  level:
+    net:
+      engineeringdigest:
+        journalApp: DEBUG
+
+weather:
+  api:
+    key: ${WEATHER_API_KEY}
