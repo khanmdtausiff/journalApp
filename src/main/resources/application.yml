@@ -1,8 +1,15 @@
 #spring:
 #  profiles:
-#    active: dev      all configs are in environment variables in IntelliJ
+#    active: dev
 
 spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
   redis:
     host: ${REDIS_HOST}
     port: 13158
